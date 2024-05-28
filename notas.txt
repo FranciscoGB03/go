@@ -123,3 +123,6 @@ mongodb://admin:password@localhost:27017/logs?authSource=admin&readPreference=pr
 librerías para mail service:
 go get github.com/vanng822/go-premailer/premailer
 go get github.com/xhit/go-simple-mail/v2
+
+librerías para listener-service y broker-service
+go get github.com/rabbitmq/amqp091-go
