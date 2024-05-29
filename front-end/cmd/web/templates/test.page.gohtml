@@ -46,6 +46,7 @@
     let logGBtn = document.getElementById("logGBtn");
 
     logGBtn.addEventListener("click", function(){
+        console.log("di clic en logG");
         const payload={
             action:"log",
             log:{
@@ -80,7 +81,7 @@
     })
     
     mailBtn.addEventListener("click", function() {
-
+        console.log("di clic en mail");
         const payload = {
             action: "mail",
             mail: {
@@ -118,6 +119,7 @@
     })
 
     logBtn.addEventListener("click", function(){
+        console.log("di clic en log");
         const payload={
             action:"log",
             log:{
@@ -152,7 +154,7 @@
     })
 
     authBrokerBtn.addEventListener("click", function() {
-
+        console.log("di clic en authentication");
         const payload = {
             action: "auth",
             auth: {
@@ -188,6 +190,7 @@
     })
 
     brokerBtn.addEventListener("click", function() {
+        console.log("di clic en broker");
 
         const body = {
             method: 'POST',

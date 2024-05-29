@@ -143,3 +143,44 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
 librería para logger-service y broker-service grpc:
 go get google.golang.org/grpc
 go get google.golang.org/protobuf
+
+Para iniciar sesion con docker:
+docker login
+
+para construir un tag a Docker image
+docker build -f logger-service.dockerfile -t pgonbo/logger-service:1.0.0 .
+docker push pgonbo/logger-service:1.0.0
+
+docker build -f broker-service.dockerfile -t pgonbo/broker-service:1.0.0 .
+
+
+
+para iniciar docker swarm:
+docker swarm init
+para agregar mas nodos:
+ docker swarm join --token SWMTKN-1-04bvyq9x5ph270suznujglnz3cb9clhtfge8dpllvzjfvq112h-4i6xu8xadwjapth214sxmt4ri 192.168.18.199:2377 
+si no se guarda el token se puede consultar de la siguiente manera:
+docker swarm join-token worker
+ para agregar un segundo manager_:
+ docker swarm join-token manager
+
+ para deploy:
+ docker stack deploy -c swarm.yml nombre_aplicacion
+
+ para listar los servicios generados:
+ docker service ls
+
+ para escalar un servicio con swarm:
+ docker service scale my_app_listener-service=3
+
+ para actualizar sin detener las imagenes:
+ docker service update --image pgonbo/logger-service:1.0.1 myapp_logger-service
+
+ para detener docker swarm por seervicio
+ docker service scale myapp_broker-service=0
+ para detener completamente
+ docker stack rm myapp
+
+
+para detener docker swarm completamente
+docker swarm leave --force
