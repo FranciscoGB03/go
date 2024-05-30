@@ -1,0 +1,58 @@
+para instalar kubernetes primero instalar 
+minikube:
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download
+y seguir las instrucciones
+
+kubectl:
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+y seguir las instrucciones para mac, linux o windows
+
+
+para iniciar kubernetes:
+minikube start --nodes=2
+
+en caso de error:
+minikube delete
+
+para detener minikube:
+minikube stop
+para iniciarlo:
+minikube start
+
+para visualizarlo
+minikube dashboard
+extension para kubernetes en VSC:
+Kubernetes
+para generar pods
+para listar todos los pods
+kubectl get pods -A
+solo los creados:-
+kubectl get pods
+para deploy:
+kubectl apply -f k8s
+para obtener info de los pods pero en especifico servicios:
+kubectl get svc
+para obtener los deployments:
+kubectl get deployments
+
+para revisar los logs de un pod en especifico:
+kubectl logs name_pod
+kubectl logs broker-service-69cf5747b5-rk92h 
+
+para eliminar los deployments:
+kubectl delete deployments nombre_pod name_pod1 nombre_pod2 ...
+
+para eliminar los servicios:
+kubectl delete svc name_svc name_svc1 name_svc2 ...
+
+para el caso de postgres se levanta una imagen en lugar de correrlo directamente en kubernates 
+desde la carpeta de project se corre el archivo de postgres.yml para que solo se levante esa imagen en docker:
+docker compose -f postgres.yml up -d
+
+para agregar un balanceador:
+kubectl expose deployment broker-service --type=LoadBalancer --port=8080 --target-port=8080
+
+
+ingress:
+minikube addons enable ingress
+
